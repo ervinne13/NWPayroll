@@ -13,8 +13,10 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'PayTron'),
 
+    'name_header_html' => env('APP_NAME_HEADER_HTML', 'PayTron <small>NuWorks Interactive Labs Inc. Payroll Platform</small>'),
+    
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -166,8 +168,8 @@ return [
 
         /*
          * Package Service Providers...
-         */
-
+         */        
+        
         /*
          * Application Service Providers...
          */
@@ -177,6 +179,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        App\Providers\ViewComposerProvider::class,
+        
     ],
 
     /*
