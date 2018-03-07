@@ -28,6 +28,107 @@
                     <span class="title">Dashboard</span>
                 </a>
             </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="fa fa-bolt"></i>
+                    <span class="title">Quick Actions</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{url('/')}}">
+                            <i class="fa fa-book"></i> Create Payroll Item
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/')}}">
+                            <i class="fa fa-table"></i> Processed New Payroll
+                        </a>
+                    </li>                    
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="fa fa-book"></i>
+                    <span class="title">Payroll</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{url('/')}}">
+                            <i class="fa fa-table"></i> Processed Payrolls
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/')}}">
+                            <i class="fa fa-file-o"></i> Policies
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/')}}">
+                            <i class="fa fa-book"></i> Payroll Items
+                        </a>
+                    </li>                    
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="fa fa-file"></i>
+                    <span class="title">Master Files</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{url('/')}}">
+                            <i class="fa fa-users"></i> Employees
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/')}}">
+                            <i class="fa fa-book"></i> Policies
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="fa fa-gear"></i>
+                    <span class="title">Setup</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{url('/')}}">
+                            <i class="fa fa-building"></i> Companies
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/')}}">
+                            <i class="fa fa-map-marker"></i> Locations
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/')}}">
+                            <i class="fa fa-plane"></i> Holidays
+                        </a>
+                    </li>                    
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="fa fa-table"></i>
+                    <span class="title">Views/Tables</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{url('/')}}">
+                            <i class="fa fa-table"></i> Tax Categories
+                        </a>
+                    </li>                 
+                </ul>
+            </li>
+
 
         </ul>
         <!-- END SIDEBAR MENU -->
