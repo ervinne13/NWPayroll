@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateHolidaysTable extends Migration
 {
 
     /**
@@ -14,13 +14,14 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('holidays', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('is_active')->default(true);
+            $table->string('type', 10)->comment('reg|spe');
             $table->string('name', 100);
-            $table->string('email', 100)->unique();
-            $table->string('password', 120);
-            $table->rememberToken();
+            $table->integer('month')->unsigned();
+            $table->integer('day')->unsigned();
+            $table->integer('year')->unsigned()->comment('Set 0 to indicate regular/repeating holiday');
             $table->timestamps();
         });
     }
@@ -32,7 +33,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('holidays');
     }
 
 }

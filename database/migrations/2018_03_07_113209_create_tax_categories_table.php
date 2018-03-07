@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateTaxCategoriesTable extends Migration
 {
 
     /**
@@ -14,13 +14,10 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->boolean('is_active')->default(true);
+        Schema::create('tax_categories', function (Blueprint $table) {
+            $table->string('code', 30)->primary();
             $table->string('name', 100);
-            $table->string('email', 100)->unique();
-            $table->string('password', 120);
-            $table->rememberToken();
+            $table->decimal('exemption_amount', 10, 2);
             $table->timestamps();
         });
     }
@@ -32,7 +29,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tax_categories');
     }
 
 }
