@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::transaction(function() {
+            $this->call(TaxCategoriesSeeder::class);
+            $this->call(TaxComputationSeeder::class);
+
             $this->call(RegularHolidaysSeeder::class);
             $this->call(DefaultSetupSeeder::class);
         });
