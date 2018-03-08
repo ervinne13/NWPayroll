@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Setup\Company;
+use App\Models\Setup\Location;
 use Illuminate\Database\Seeder;
 
 class DefaultSetupSeeder extends Seeder

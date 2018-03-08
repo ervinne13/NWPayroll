@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Setup\Holiday;
 use Illuminate\Database\Seeder;
 
 class RegularHolidaysSeeder extends Seeder
@@ -13,18 +14,18 @@ class RegularHolidaysSeeder extends Seeder
     public function run()
     {
         $regularHolidays = [
-            1, 1, "New Year's Day",
-            5, 1, "Labor Day",
-            6, 12, "Independence Day",
-            12, 25, "Christmas Day",
-            12, 30, "Rizal Day",
+            [1, 1, "New Year's Day"],
+            [5, 1, "Labor Day"],
+            [6, 12, "Independence Day"],
+            [12, 25, "Christmas Day"],
+            [12, 30, "Rizal Day"],
         ];
 
         $specialHolidays = [
-            11, 1, "All Saints Day",
-            11, 30, "Bonifacio Day",
-            12, 24, "Christmas Eve",
-            12, 31, "New Year's Eve",
+            [11, 1, "All Saints Day"],
+            [11, 30, "Bonifacio Day"],
+            [12, 24, "Christmas Eve"],
+            [12, 31, "New Year's Eve"],
         ];
 
         foreach ($regularHolidays as $regularHoliday) {
