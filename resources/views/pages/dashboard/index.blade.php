@@ -4,19 +4,16 @@
 <script src="{{asset("assets/global/plugins/jquery.pulsate.min.js")}}" type="text/javascript"></script>
 <script src="{{asset("assets/global/node_modules/blueimp-tmpl/js/tmpl.min.js")}}" type="text/javascript"></script>
 
-<script src="{{asset("assets/admin/pages/dashboard/StatusBar.js")}}" type="text/javascript"></script>
-<script src="{{asset("assets/admin/pages/dashboard/dashboard.js")}}" type="text/javascript"></script>
-<script src="{{asset("assets/admin/pages/dashboard/ratchet-status.js")}}" type="text/javascript"></script>
+<script src="{{asset("assets/pages/dashboard/StatusBar.js")}}" type="text/javascript"></script>
+<script src="{{asset("assets/pages/dashboard/dashboard.js")}}" type="text/javascript"></script>
+<script src="{{asset("assets/pages/dashboard/ratchet-status.js")}}" type="text/javascript"></script>
 
-<script src="{{asset("assets/admin/pages/dashboard/product-sync.js")}}" type="text/javascript"></script>
+<script src="{{asset("assets/pages/dashboard/product-sync.js")}}" type="text/javascript"></script>
 
 <script type="text/javascript">
 
-$(document).ready(function () {
-    RatchetStatus.init();
+$(document).ready(function () {    
     Dashboard.init();
-
-    ProductSync.init();
 });
 
 </script>

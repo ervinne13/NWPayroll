@@ -24,7 +24,7 @@
 
             <li class="start ">
                 <a href="{{url('/')}}">
-                    <i class="icon-home"></i>
+                    <i class="fa fa-home"></i>
                     <span class="title">Dashboard</span>
                 </a>
             </li>
@@ -61,12 +61,12 @@
                     </li>
                     <li>
                         <a href="{{url('/')}}">
-                            <i class="fa fa-file-o"></i> Policies
+                            <i class="fa fa-file-alt"></i> Policies
                         </a>
                     </li>
                     <li>
                         <a href="{{url('/')}}">
-                            <i class="fa fa-book"></i> Payroll Items
+                            <i class="fa fa-copy"></i> Payroll Items
                         </a>
                     </li>                    
                 </ul>
