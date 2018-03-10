@@ -1,6 +1,6 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "ervinne13/nwpayroll",
+    "description": "NuWorks Interactive Labs Inc. Payroll Platform",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",

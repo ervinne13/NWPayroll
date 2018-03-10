@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
 
             $this->call(RegularHolidaysSeeder::class);
             $this->call(DefaultSetupSeeder::class);
+
+            $this->call(PayrollVariablesSeeder::class);
+            $this->call(NuWorksPayrollItemsSeeder::class);
         });
     }
 

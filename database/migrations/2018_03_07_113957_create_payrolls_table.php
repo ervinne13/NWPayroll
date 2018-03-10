@@ -16,9 +16,9 @@ class CreatePayrollsTable extends Migration
     {
         Schema::create('payrolls', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('is_open')->default(false);
+            $table->boolean('is_open')->default(true);
             $table->integer('policy_id')->unsigned();
-            $table->date('pay_period');
+            $table->date('release_date');
             $table->date('cutoff_start');
             $table->date('cutoff_end');
 
