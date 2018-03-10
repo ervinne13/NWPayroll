@@ -6,6 +6,7 @@
 /vendor
 /.idea
 /.vagrant
+composer.lock
 nbproject
 Homestead.json
 Homestead.yaml
