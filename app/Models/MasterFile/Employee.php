@@ -14,7 +14,9 @@ class Employee extends Model
 
     public function payroll_items()
     {
-        return $this->belongsToMany(PayrollItem::class, 'employee_payroll_items', 'employee_code', 'payroll_item_id');
+        return $this
+                ->belongsToMany(PayrollItem::class, 'employee_payroll_items', 'employee_code', 'payroll_item_id')
+                ->withPivot('amount');
     }
 
 }

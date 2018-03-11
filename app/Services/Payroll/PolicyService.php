@@ -4,6 +4,7 @@ namespace App\Services\Payroll;
 
 use App\Models\MasterFile\Employee;
 use App\Models\MasterFile\Policy;
+use Exception;
 
 /**
  * Description of PolicyService
@@ -23,7 +24,14 @@ class PolicyService
         $employee->payroll_items()->detach();
         foreach ($policy->payroll_items as $payrollItem) {
 
-            if (array_key_exists($payrollItem->id, $payrollItemAmountMapping)) {
+            $hasMapping = array_key_exists($payrollItem->id, $payrollItemAmountMapping);
+
+            if ($payrollItem->requires_employee_amount && !$hasMapping) {
+                //  TODO: use a specific exception
+                throw new Exception(sprintf('Payroll Item "%s" requires an amount to be applied.', $payrollItem->name));
+            }
+
+            if ($hasMapping) {
                 $employee->payroll_items()->save($payrollItem, ['amount' => $payrollItemAmountMapping[$payrollItem->id]]);
             } else {
                 $employee->payroll_items()->save($payrollItem);
@@ -31,10 +39,15 @@ class PolicyService
         }
     }
 
-    private function createPayrollItemAmountMapping($payrollITemAmounts)
+    private function createPayrollItemAmountMapping($payrollItemAmounts)
     {
-        //  TODO:
-        return $payrollITemAmounts;
+        $mapping = [];
+
+        foreach ($payrollItemAmounts as $itemAmount) {
+            $mapping[$itemAmount['payroll_item_id']] = $itemAmount['amount'];
+        }
+
+        return $mapping;
     }
 
 }
