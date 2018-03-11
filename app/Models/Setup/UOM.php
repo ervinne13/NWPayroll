@@ -16,4 +16,15 @@ class UOM
     const MINUTE = 'min';
     const EXACT  = 'exa';
 
+    public static function getList()
+    {
+        return [
+            static::MONTH,
+            static::DAY,
+            static::HOUR,
+            static::MINUTE,
+            static::EXACT,
+        ];
+    }
+
 }

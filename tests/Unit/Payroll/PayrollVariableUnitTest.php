@@ -29,15 +29,20 @@ class PayrollVariableUnitTest extends TestCase
 
         $create = new QuickCreate();
 
-        $monthlyIncomePV = $create->payrollVariable('TEST_MONTHLY_INCOME', 'INCOME', 'Basic Pay (Monthly)', UOM::MONTH);
-        $payrollItem     = $create->payrollItem('Monthly Income', UOM::MONTH, 'TEST_MONTHLY_INCOME', null);
+        $create->payrollVariable('TEST_MONTHLY_INCOME', 'INCOME', 'Basic Pay (Monthly)', UOM::MONTH);
+        $payrollItem = $create->payrollItem('Monthly Income', UOM::MONTH, 'TEST_MONTHLY_INCOME', null);
 
         $policy       = $create->policy('My Policy', [$payrollItem]);
         $payroll      = factory(Payroll::class, 1)->create(['policy_id' => $policy->id])->first();
         $employee     = factory(Employee::class, 1)->create(['policy_id' => $policy->id])->first();
         $payrollEntry = $create->payrollEntry($employee->code, $payrollItem->id, $payroll->id, '1', 15000, 15000); // 15k income
 
-        $this->assertTrue(true);
+        $this->assertNotNull($payrollEntry);
+
+//        $variableGenerator = new PayrollEntryVariableValueGenerator();
+//        $output            = $variableGenerator->generateFrom($payrollEntry);
+//
+//        $this->assertInstanceOf(PayrollVariableValue::class, $output);
     }
 
 }
