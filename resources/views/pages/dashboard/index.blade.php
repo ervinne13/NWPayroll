@@ -29,7 +29,6 @@ $(document).ready(function () {
     </div>
 
     <div class="col-md-6 col-xs-12">
-        Test Update
         @include('pages.dashboard.partials.status')
     </div>
 
