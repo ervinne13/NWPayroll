@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class PayrollVariable extends Model
 {
 
-    protected $fillable = ['code', 'group_code', 'name', 'uom'];
+    public $incrementing = false;
+    protected $primary   = 'code';
+    protected $fillable  = ['code', 'group_code', 'name', 'uom'];
 
 }

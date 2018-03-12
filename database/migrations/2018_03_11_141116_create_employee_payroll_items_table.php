@@ -6,6 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateEmployeePayrollItemsTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -18,6 +19,18 @@ class CreateEmployeePayrollItemsTable extends Migration
             $table->integer('payroll_item_id')->unsigned();
             $table->decimal('amount', 10, 7)->default(0)->comment('Has value when the payroll item is marked "requires_employee_amount".');
             $table->timestamps();
+
+            $table->foreign('employee_code')
+                    ->references('code')
+                    ->on('employees')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+
+            $table->foreign('payroll_item_id')
+                    ->references('id')
+                    ->on('payroll_items')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
         });
     }
 
@@ -30,4 +43,5 @@ class CreateEmployeePayrollItemsTable extends Migration
     {
         Schema::dropIfExists('employee_payroll_items');
     }
+
 }

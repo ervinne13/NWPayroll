@@ -4,6 +4,9 @@ namespace App\Services\Payroll;
 
 use App\Models\MasterFile\Employee;
 use App\Models\MasterFile\Policy;
+use App\Models\Payroll\EmployeePayrollVariableValue;
+use App\Models\Payroll\PayrollItem;
+use Carbon\Carbon;
 use Exception;
 
 /**
@@ -37,6 +40,38 @@ class PolicyService
                 $employee->payroll_items()->save($payrollItem);
             }
         }
+
+        $this->generateEmployeePayrollVariables($employeeCode);
+    }
+
+    public function generateEmployeePayrollVariables($employeeCode)
+    {
+        $employee     = Employee::findOrFail($employeeCode);
+        $payrollItems = $employee->payroll_items;
+
+        foreach ($payrollItems as $payrollItem) {
+            //  check if any of the payroll items can generate variables
+            if ($payrollItem->generatesVariableValue()) {
+                $this->generateVariableValue($payrollItem, $employee);
+            }
+        }
+
+        return $employee->payroll_variable_values;
+    }
+
+    private function generateVariableValue(PayrollItem $payrollItem, Employee $employee)
+    {
+
+        $payrollVariableValue = new EmployeePayrollVariableValue();
+
+        $payrollVariableValue->employee_code         = $employee->code;
+        $payrollVariableValue->payroll_variable_code = $payrollItem->dependentPayrollVariable->code;
+        $payrollVariableValue->date_applied          = Carbon::now();
+        $payrollVariableValue->value                 = $payrollItem->pivot->amount;
+
+        //  TODO cascade amount to other payroll variables
+
+        $payrollVariableValue->save();
     }
 
     private function createPayrollItemAmountMapping($payrollItemAmounts)

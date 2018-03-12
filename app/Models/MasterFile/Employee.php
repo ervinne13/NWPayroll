@@ -2,6 +2,7 @@
 
 namespace App\Models\MasterFile;
 
+use App\Models\Payroll\EmployeePayrollVariableValue;
 use App\Models\Payroll\PayrollItem;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,8 +16,13 @@ class Employee extends Model
     public function payroll_items()
     {
         return $this
-                ->belongsToMany(PayrollItem::class, 'employee_payroll_items', 'employee_code', 'payroll_item_id')
-                ->withPivot('amount');
+                        ->belongsToMany(PayrollItem::class, 'employee_payroll_items', 'employee_code', 'payroll_item_id')
+                        ->withPivot('amount');
+    }
+
+    public function payroll_variable_values()
+    {
+        return $this->hasMany(EmployeePayrollVariableValue::class, 'employee_code');
     }
 
 }
