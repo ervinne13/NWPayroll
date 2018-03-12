@@ -129,12 +129,28 @@ class PolicyServiceUnitTest extends TestCase
     }
 
     /**
+     * @test
      * TODO: This will generate payroll variable values for variables under the
      * same group but with different units of measurement
      */
     public function it_can_generate_cascaded_payroll_variable_values()
     {
+        $create = new QuickCreate();
+
+        $create->payrollVariable('TEST_MONTHLY_INCOME', 'INCOME', 'Basic Pay (Monthly)', UOM::MONTH);
+        $payrollItem = $create->payrollItem('Monthly Income', UOM::MONTH, 'TEST_MONTHLY_INCOME', null);
+
+        $policy   = $create->policy('My Policy', [$payrollItem]);
+        $employee = factory(Employee::class, 1)->create(['policy_id' => $policy->id])->first();
+
+        $amounts = [
+            ['payroll_item_id' => $payrollItem->id, 'amount' => 20000]
+        ];
+
+        $service = App::make(PolicyService::class);
+        $service->applyToEmployee($policy->id, $employee->code, $amounts);
         
+        $this->assertCount(4, $employee->payroll_variable_values);
     }
 
     //  Negative Tests
